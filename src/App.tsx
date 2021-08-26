@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import {  BrowserRouter as Router,  Switch,  Route,  Link,Redirect
+} from "react-router-dom";
+import AboutUs from "./Pages/AboutUs";
+import Carrer from './Pages/Carrer';
+import Apply from './Pages/Apply';
+import Login from './Pages/Login';
+import Candidature from './Pages/Candidature'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route exact path='/'>
+        <Redirect to="/aboutus"/>
+      </Route>
+      <Route exact path='/aboutus'>
+        <AboutUs/>
+      </Route>
+      <Route exact path='/careers'>
+        <Carrer/>
+      </Route>
+      <Route exact path='/apply/:id'>
+        <Apply/>
+      </Route>
+      <Route exact path='/login'>
+        <Login/>
+      </Route>
+      <Route exact path='/candidates'>
+        <Candidature/>
+      </Route>
+    </Router>
+
   );
 }
 
